@@ -32,19 +32,20 @@ import com.example.praktikum6.R
 
 @Composable
 fun FormIsian(
-    jenisK: List<String> = listOf("Laki-laki","Perempuan"),
-    OnSubmitBtnClick: () -> Unit
+    jenisK:List<String> = listOf("Laki-laki","Perempuan"),
+    OnSubmitBtnClick:() -> Unit,
 ){
-    Scaffold (modifier = Modifier,
+    Scaffold(modifier = Modifier,
         {
             TopAppBar(
                 title = {Text(stringResource(id= R.string.home),
                     color = Color.White)},
-                colors = TopAppBarDefaults.topAppBarColors
-                    (colorResource(id = R.color.teal_700))
-            )}
-    ) { isiRuang->
-        Column (modifier = Modifier.padding(isiRuang),
+                colors = TopAppBarDefaults.topAppBarColors(
+                    colorResource(id = R.color.teal_700)
+                )
+            )
+        }){ isiRuang ->
+        Column(modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally)
         {
@@ -54,16 +55,17 @@ fun FormIsian(
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .width(250.dp),
-                label = {Text(text = "Nama Lengkap")},
+                label = { Text(text = "Nama Lengkap") },
                 onValueChange = {},
             )
             HorizontalDivider(modifier = Modifier
                 .padding(20.dp)
-                .width(250.dp), thickness = Thickness,color = Color.Red)
-            Row {
+                .width(250.dp), thickness = Thickness,color =
+                Color.Red)
+            Row{
                 jenisK.forEach {
-                    item->
-                    Row (verticalAlignment = Alignment.CenterVertically){
+                        item->
+                    Row(verticalAlignment = Alignment.CenterVertically){
                         RadioButton(
                             selected = false,
                             onClick = {item}
@@ -74,7 +76,7 @@ fun FormIsian(
             }
             HorizontalDivider(modifier = Modifier
                 .padding(20.dp)
-                .padding(250.dp),
+                .width(250.dp),
                 thickness = 1.dp,
                 color = Color.Red
             )
@@ -83,16 +85,17 @@ fun FormIsian(
                 singleLine = true,
                 modifier = Modifier
                     .width(250.dp),
-                label = {Text(text = "Alamat")},
+                label = { Text(text = "Alamat") },
                 onValueChange = {},
             )
             Spacer(modifier = Modifier.height(30.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(1f),
                 onClick = OnSubmitBtnClick
-            ) {
-                Text(stringResource(R.string.submit))
+            ){
+                Text(stringResource(id = R.string.submit))
             }
         }
     }
+
 }
